@@ -45,8 +45,11 @@ function isValid(number){
 
   const reducer = (accumulator, currentValue) => accumulator + currentValue;
   var sum = newArray.reduce(reducer);
+  sum = sum * 9;
+  sum = sum / 10;
+  sum = Math.round((sum - Math.floor(sum)) * 10);
 
-  return lastDigit;
+  return (sum == lastDigit);
 }
 console.log(isValid(79927398713));
 
