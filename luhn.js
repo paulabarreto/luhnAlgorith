@@ -16,6 +16,12 @@
 
 //Receive a number
 //Reverse the number and retrieve every second digit
+//Reverse the number and retrieve every second digit
+//Calculate the double of the digits
+//Check if the result of the calculation is greater than 9.
+  //If yes, then add the digits of the product
+//Sum all the digits and take de modulo 10
+  //if it is equal to 0 then the number is valid.
 
 function isValid(number){
   var str = number.toString();
@@ -24,26 +30,25 @@ function isValid(number){
   var newArray = [];
   for(var i = 0; i < array.length; i++){
     if (i % 2 !== 0){
+      array[i] = (array[i] * 2)
+      if(array[i] > 9){
+        array[i] -= 9;
+      }
+    }
+    if(i !== 0){
+      array[i] = parseInt(array[i]);
       newArray.push(array[i]);
+    } else {
+      var lastDigit = array[i];
     }
-  }
-  var doubles = [];
-  for(var i = 0; i < newArray.length; i++){
-    var calcDobles = newArray[i] * 2;
-    if(calcDobles > 9){
-      calcDobles = calcDobles - 9;
-    }
-    doubles.push(calcDobles);
   }
 
-  return doubles;
+  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+  var sum = newArray.reduce(reducer);
+
+  return lastDigit;
 }
 console.log(isValid(79927398713));
-//Reverse the number and retrieve every second digit
-//Calculate the double of the digits
-//Check if the result of the calculation is greater than 9.
-  //If yes, then add the digits of the product
-//Sum all the digits and take de modulo 10
-  //if it is equal to 0 then the number is valid.
+
 
   module.exports = isValid;
