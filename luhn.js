@@ -15,14 +15,30 @@
 //
 
 //Receive a number
+//Reverse the number and retrieve every second digit
+
 function isValid(number){
   var str = number.toString();
   var strReverse = str.split("").reverse().join("")
   var array = Array.from(strReverse);
+  var newArray = [];
+  for(var i = 0; i < array.length; i++){
+    if (i % 2 !== 0){
+      newArray.push(array[i]);
+    }
+  }
+  var doubles = [];
+  for(var i = 0; i < newArray.length; i++){
+    var calcDobles = newArray[i] * 2;
+    if(calcDobles > 9){
+      calcDobles = calcDobles - 9;
+    }
+    doubles.push(calcDobles);
+  }
 
-  return array;
+  return doubles;
 }
-console.log(isValid(1238975));
+console.log(isValid(79927398713));
 //Reverse the number and retrieve every second digit
 //Calculate the double of the digits
 //Check if the result of the calculation is greater than 9.
